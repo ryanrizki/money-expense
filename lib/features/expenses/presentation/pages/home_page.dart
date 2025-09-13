@@ -99,6 +99,10 @@ class HomePage extends StatelessWidget {
   List<Widget> _buildList(Iterable<Expense> items) {
     return items
         .map((e) => Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              color: Colors.white,
               child: ListTile(
                 leading: CircleAvatar(
                   radius: 16,
@@ -107,7 +111,9 @@ class HomePage extends StatelessWidget {
                 ),
                 title: Text(e.name),
                 subtitle: Text(_formatDate(e.date)),
-                trailing: Text(_formatCurrency(e.amount)),
+                trailing: Text(_formatCurrency(e.amount),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w700, color: Colors.black)),
               ),
             ))
         .toList();
@@ -160,7 +166,7 @@ class HomePage extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 24),
             decoration: BoxDecoration(
-              color: Colors.grey.shade100,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
             child: const Center(
